@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Company Info Finder</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Company Info Finder</h1>
+        <form method="POST">
+            <input type="text" name="company" placeholder="Enter Company Name" required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if info.summary %}
+            <div class="result">
+                <h2>Summary:</h2>
+                <p>{{ info.summary }}</p>
+                <a href="{{ info.url }}" target="_blank">Read More</a>
+                <h3>LinkedIn:</h3>
+                <a href="{{ info.linkedin }}" target="_blank">{{ info.linkedin }}</a>
+                <h3>Future Plans:</h3>
+                <p>{{ info.future_plans }}</p>
+            </div>
+        {% endif %}
+
+        {% if news %}
+            <h2>Recent News:</h2>
+            <ul>
+            {% for article in news %}
+                <li><a href="{{ article.url }}" target="_blank">{{ article.title }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if info.summary %}
+            <div>
+                <a href="/download/pdf"><button>Download PDF</button></a>
+                <a href="/download/csv"><button>Download CSV</button></a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
