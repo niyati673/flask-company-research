@@ -1,0 +1,8 @@
+Flask
+wikipedia
+requests
+beautifulsoup4
+googlesearch-python
+fpdf
+pandas
+openai
